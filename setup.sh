@@ -27,14 +27,21 @@ function main() {
 
     addUserAccount "${username}" "${password}"
 
-    read -rp $'Paste in the public SSH key for the new user:\n' sshKey
+    read -rp $'Do you want to paste the public SSH key for the new user (y/n)?\n' sshQuestion
+    if [[ "${sshQuestion}" != "y" ]]; then
+        read -rp $'Paste in the public SSH key for the new user:\n' sshKey
+        addSSHKey "${username}" "${sshKey}"
+    else
+        read -rp $'Write the mail address for the user ssh key:\n' sshMail
+        generateSSHKey "${username}" "${sshMail}"
+    fi
+    changeSSHConfig
+
     echo 'Running setup script...'
     logTimestamp "${output_file}"
 
     exec 3>&1 >>"${output_file}" 2>&1
     disableSudoPassword "${username}"
-    addSSHKey "${username}" "${sshKey}"
-    changeSSHConfig
     setupUfw
 
     if ! hasSwap; then

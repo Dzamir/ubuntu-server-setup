@@ -33,6 +33,20 @@ function addSSHKey() {
     execAsUser "${username}" "chmod 600 ~/.ssh/authorized_keys"
 }
 
+# Generate the public SSH Key for the new user account
+# Arguments
+#   Account Username
+#   mail for ssh key
+function generateSSHKey() {
+    local username=${1}
+    local sshMail=${2}
+
+    execAsUser "${username}" "mkdir -p ~/.ssh; chmod 700 ~/.ssh; touch ~/.ssh/authorized_keys"
+    execAsUser "${username}" "ssh-keygen -t ed25519 -C ${sshMail}"
+    execAsUser "${username}" "chmod 600 ~/.ssh/authorized_keys"
+}
+
+
 # Execute a command as a certain user
 # Arguments:
 #   Account Username
