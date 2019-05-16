@@ -63,7 +63,7 @@ function main() {
     
     cleanup
 
-    echo "Setup Done! Log file is located at ${output_file}" >&3
+    echo "Setup Done!" >&3
 }
 
 function setupSwap() {
