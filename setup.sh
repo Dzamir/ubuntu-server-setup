@@ -18,9 +18,11 @@ includeDependencies
 output_file="output.log"
 
 function main() {
+    sudo apt-get update -y 
+    sudo apt-get upgrade -y 
     username=$(whoami)
+    
     # read -rp "Enter the username of the new user account:" username
-
     # promptForPassword
 
     # Run setup functions
@@ -42,13 +44,7 @@ function main() {
     logTimestamp "${output_file}"
 
     exec 3>&1 >>"${output_file}" 2>&1
-    disableSudoPassword "${username}"
-    setupUfw
-
-    if ! hasSwap; then
-        setupSwap
-    fi
-
+    
     setupTimezone
 
     echo "Installing Network Time Protocol... " >&3
