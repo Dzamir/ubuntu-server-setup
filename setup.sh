@@ -25,6 +25,7 @@ function main() {
     # read -rp "Enter the username of the new user account:" username
     # promptForPassword
 
+\
     # Run setup functions
     trap cleanup EXIT SIGHUP SIGINT SIGTERM
 
@@ -87,10 +88,10 @@ function logTimestamp() {
 }
 
 function setupTimezone() {
-    echo -ne "Enter the timezone for the server (Default is 'Asia/Singapore'):\n" >&3
+    echo -ne "Enter the timezone for the server (Default is 'Europe/Rome'):\n" >&3
     read -r timezone
     if [ -z "${timezone}" ]; then
-        timezone="Asia/Singapore"
+        timezone="Europe/Rome"
     fi
     setTimezone "${timezone}"
     echo "Timezone is set to $(cat /etc/timezone)" >&3
