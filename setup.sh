@@ -18,8 +18,8 @@ includeDependencies
 output_file="output.log"
 
 function main() {
-    sudo apt-get update -y 
-    sudo apt-get upgrade -y 
+    updateSystem
+    installPackages
     username=$(whoami)
     
     # read -rp "Enter the username of the new user account:" username

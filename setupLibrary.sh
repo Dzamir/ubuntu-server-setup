@@ -180,3 +180,12 @@ function gitlabRunner() {
     sudo gitlab-runner start
     sudo gitlab-runner register
 }
+
+function updateSystem() {
+    sudo apt-get update -y 
+    sudo apt-get upgrade -y 
+}
+
+function installPackages() {
+    sudo apt install -y build-essential unzip subversion nodejs npm
+}
