@@ -28,7 +28,7 @@ function main() {
     # addUserAccount "${username}" "${password}"
 
     read -rp $'Do you want to paste the public SSH key for the new user (y/n)?\n' sshQuestion
-    if [[ "${sshQuestion}" != "y" ]]; then
+    if [[ "${sshQuestion}" == "y" ]]; then
         read -rp $'Paste in the public SSH key for the new user:\n' sshKey
         addSSHKey "${username}" "${sshKey}"
     else
