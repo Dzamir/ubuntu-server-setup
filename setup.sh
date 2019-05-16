@@ -20,12 +20,12 @@ output_file="output.log"
 function main() {
     read -rp "Enter the username of the new user account:" username
 
-    promptForPassword
+    # promptForPassword
 
     # Run setup functions
     trap cleanup EXIT SIGHUP SIGINT SIGTERM
 
-    addUserAccount "${username}" "${password}"
+    # addUserAccount "${username}" "${password}"
 
     read -rp $'Do you want to paste the public SSH key for the new user (y/n)?\n' sshQuestion
     if [[ "${sshQuestion}" != "y" ]]; then
@@ -117,3 +117,5 @@ function promptForPassword() {
 }
 
 main
+
+https://github.com/Dzamir/ubuntu-server-setup.git
