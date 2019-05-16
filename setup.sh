@@ -42,14 +42,14 @@ function main() {
     changeSSHConfig
 
     echo 'Running setup script...'
-    logTimestamp "${output_file}"
+   # logTimestamp "${output_file}"
 
-    exec 3>&1 >>"${output_file}" 2>&1
+    # exec 3>&1 >>"${output_file}" 2>&1
     
-    setupTimezone
+    # setupTimezone
 
-    echo "Installing Network Time Protocol... " >&3
-    configureNTP
+    # echo "Installing Network Time Protocol... " >&3
+    # configureNTP
 
     sudo service ssh restart
 
