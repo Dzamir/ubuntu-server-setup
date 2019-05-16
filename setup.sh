@@ -53,8 +53,13 @@ function main() {
 
     sudo service ssh restart
 
+    echo "Installing docker..."
     docker
+    echo "Installing docker-compose..."
     dockerCompose
+
+    echo "Installing GitLab Runner"
+    gitlabRunner
     
     cleanup
 
@@ -114,6 +119,5 @@ function promptForPassword() {
    done 
 }
 
-main
 
-https://github.com/Dzamir/ubuntu-server-setup.git
+main
